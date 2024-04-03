@@ -2,18 +2,18 @@ public class Main {
 
     public static void checkYear(int year) {
         if ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)) {
-            System.out.println(year + " год явлается високосным.");
+            System.out.println(year + " год - год високосный.");
         } else {
-            System.out.println(year + " год не является високосным.");
+            System.out.println(year + " год - не високосный год.");
         }
     }
 
-    public static void recommendationVersion(int clientOS, int year) {
-        if (clientOS == 0 && year >= 2023) {
+    public static void recommendationVersion(int clientOS, int currentYear) {
+        if (clientOS == 0 && currentYear >= 2023) {
             System.out.println("Установите версию приложения для iOS по ссылке.");
         } else if (clientOS == 0) {
             System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-        } else if (clientOS == 1 && year < 2024) {
+        } else if (clientOS == 1 && currentYear < 2024) {
             System.out.println("Установите облегченную версию приложения для Android по ссылке");
         } else {
             System.out.println("Установите версию приложения для Android по ссылке.");
@@ -28,6 +28,8 @@ public class Main {
             day = day + 2;
         } else if (distance <= 100) {
             day = day + 3;
+        } else if (distance > 100) {
+            System.out.println("Доставки нет.");
         }
         return day;
     }
@@ -43,11 +45,9 @@ public class Main {
         recommendationVersion(os, clientDeviceYear);
 
         // Задача 3
-        int deliveryDistante = 95;
+        int deliveryDistante = 120;
         if (countingDays(deliveryDistante) != 0) {
             System.out.println("Потребуется дней доставки: " + countingDays(deliveryDistante));
-        } else {
-            System.out.println("Доставки нет.");
         }
     }
 }
